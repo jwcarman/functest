@@ -1,24 +1,46 @@
 package com.carmanconsulting.cargo;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
-import java.net.URL;
+import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URL;
 
-public class WebappIT extends TestCase
+public class WebappIT extends Assert
 {
+//----------------------------------------------------------------------------------------------------------------------
+// Fields
+//----------------------------------------------------------------------------------------------------------------------
+
     private String baseUrl;
 
+//----------------------------------------------------------------------------------------------------------------------
+// Other Methods
+//----------------------------------------------------------------------------------------------------------------------
+
+    @Before
     public void setUp() throws Exception
     {
-        super.setUp();
         String port = System.getProperty("servlet.port");
-        this.baseUrl = "http://localhost:" + port + "/functest-webapp";
+        this.baseUrl = "http://localhost:" + port + "/";
     }
 
-    public void testCallIndexPage() throws Exception
+    @Test
+    public void testWebapp1() throws Exception
     {
-        URL url = new URL(this.baseUrl);
+        assertPathAccessible("functest1");
+    }
+
+    @Test
+    public void testWebapp2() throws Exception
+    {
+        assertPathAccessible("functest2");
+    }
+
+    private void assertPathAccessible(String path) throws IOException {
+        URL url = new URL(this.baseUrl + path);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.connect();
         assertEquals(200, connection.getResponseCode());

@@ -53,6 +53,17 @@
                                 <groupId>${project.groupId}</groupId>
                                 <artifactId>functest-webapp</artifactId>
                                 <type>war</type>
+                                <properties>
+                                    <context>functest1</context>
+                                </properties>
+                            </deployable>
+                            <deployable>
+                                <groupId>${project.groupId}</groupId>
+                                <artifactId>functest-webapp</artifactId>
+                                <type>war</type>
+                                <properties>
+                                    <context>functest2</context>
+                                </properties>
                             </deployable>
                         </deployables>
                         <container>
