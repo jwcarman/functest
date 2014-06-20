@@ -1,8 +1,8 @@
 package com.carmanconsulting.cargo;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
 
-public class SomeClassTest extends TestCase
+public class SomeClassTest extends Assert
 {
     public void testDoSomething()
     {
